@@ -19,3 +19,20 @@ todovenv\Scripts\activate
 >MacOs:
 ```
 source todovenv/bin/activate
+```
+3. _install dependencies from **requirements.txt**_ :
+```
+pip install -r requirements.txt
+```
+4. _Apply Database migrations_:
+```
+python manage.py migrate
+```
+5. _Run the development server_:
+```
+python manage.py runserver
+```
+6. Open your browser and visit:
+```
+http://127.0.0.1:8000
+```
