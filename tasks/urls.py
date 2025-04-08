@@ -2,5 +2,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.task, name = "taskName")
+    path('', views.todo_view, name = "todo")
 ]
