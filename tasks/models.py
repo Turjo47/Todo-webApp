@@ -14,12 +14,11 @@ STATUS_CHOICES= [
     ('completed', 'Completed'),
 ]
 class Task(models.Model):
-    user = models.ForeignKey(on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     title= models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length=225)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     is_completed = models.BooleanField()
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     priority = models.CharField(max_length=10, choices=PRIORITY_CHOICES, default='med')
-    

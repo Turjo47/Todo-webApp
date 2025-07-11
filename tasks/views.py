@@ -1,7 +1,13 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
-
-todo_items=[]
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from .models import Task
 # Create your views here.
-def todo_view(request):
-    return render(request, "tasks/task_list.html")
+
+@login_required
+def task_list(request):
+    tasks = Task.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'tasks/tasks_list.html', {'tasks':tasks})
+
+@login_required
+def task_create(request):
+    pass
