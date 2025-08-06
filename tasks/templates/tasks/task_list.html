@@ -6,6 +6,16 @@
     <title>Document</title>
 </head>
 <body>
+    {% if request.user.is_authenticated %}
+        <p>{{request.user}}</p>
+        <form action="{% url "logout" %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+        </form>
+    {% else %}
+        <a href="{% url "login" %}">Login</a>
+    {% endif %}
+    <hr>
     <h1>My ToDo List</h1>
     <a href="{% url "task-create" %}">Add Task</a>
     <table>
