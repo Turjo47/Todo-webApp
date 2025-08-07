@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+    <div class="d-flex justify-content-center align-items-center vh-100">
     {% if request.user.is_authenticated %}
-        <p>{{request.user}}</p>
-        <form action="{% url "logout" %}" method="POST">
-        {% csrf_token %}
-        <button type="submit">Logout</button>
-        </form>
+        <div class="card p-4 shadow" style="width: 22rem;">
+            <div class="d-flex align-items-center mb-4 gap-5">
+                <p class="mb-0 text-left"> Logged in as {{request.user}}</p>
+                <form action="{% url "logout" %}" method="POST">
+                    {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Logout</button>
+                </form>
+            </div>
+        
+
     {% else %}
         <a href="{% url "login" %}">Login</a>
     {% endif %}
-    <hr>
-    <h1>My ToDo List</h1>
-    <a href="{% url "task-create" %}">Add Task</a>
+
+    <h1 class="mb-4 text-center fw-bold text-uppercase">My ToDo List</h1>
+    <a class="btn btn-success mb-4" href="{% url "task-create" %}">Add Task</a>
     
-    <form action="" method="GET">
+    <form class="mb-4" action="" method="GET">
         <input type="text" name="search-area" value={{search_input}}>
-        <input type="submit" value="Search">
+        <input type="submit" value="Search" placeholder="Search Here!">
     </form>
     <table>
         <tr>
@@ -31,13 +34,17 @@
         {% for task in tasks %}
             <tr>
                 <td>{{task.title}}</td>
-                <td><a href="{% url "task" task.id %}">View</a></td>
-                <td><a href="{% url "task-update" task.id %}">Edit</a></td>
-                <td><a href="{% url "task-delete" task.id %}">Delete</a></td>
+                <td><a class="btn btn-success btn-sm" href="{% url "task-update" task.id %}">Edit</a></td>
+                <td><a class="btn btn-danger btn-sm"href="{% url "task-delete" task.id %}">Delete</a></td>
             </tr>
         {% empty %}
             <h3>No items in list</h3>
         {% endfor %}
     </table>
-</body>
-</html>
+
+
+    </div>
+        
+        </div>
+    
+{% endblock %}
