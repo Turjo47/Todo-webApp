@@ -7,7 +7,7 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
-from .forms import UpdateForm
+from .forms import TaskForm
 
 
 
@@ -57,7 +57,8 @@ class TaskDetail(LoginRequiredMixin, DetailView):
 
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ['title', 'description', 'is_completed']
+    form_class=TaskForm
+    # fields = ['title', 'description', 'is_completed']
     success_url = reverse_lazy('tasks')
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -65,7 +66,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model= Task
-    form_class= UpdateForm
+    form_class= TaskForm
     # fields = ['title', 'description', 'is_completed']
     success_url = reverse_lazy('tasks')
 

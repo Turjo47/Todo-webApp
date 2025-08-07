@@ -42,3 +42,14 @@ table tr{
     background-color:rgba(0, 123, 255, 0.1);
     color: rgb(177, 214, 247);
 }
+.go-back{
+    background-color:transparent;
+    border:none;
+    color: white;
+    font-weight: 300;
+    padding: 5px 10px;
+}
+.go-back:hover{
+    background-color:rgba(0, 123, 255, 0.1);
+    color: rgb(177, 214, 247);
+}

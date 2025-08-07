@@ -1,6 +1,16 @@
-<a href="{% url "tasks" %}">Go Back</a>
-<form action="" method="POST">
-    {% csrf_token %}
-    <p>Are you sure your want to delete this task?</p>
-    <input type="submit" value="Delete">
-</form>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Delete Confirmation{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card glass-card p-4 shadow position-relative" style="width: 22rem;">
+        <a href="{% url "tasks" %}" class="btn go-back position-absolute" style="top:5px; right:5px;">Go Back</a>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <p>Are you sure your want to delete this task?</p>
+                <input class="btn btn-danger"type="submit" value="Delete">
+            </form>
+    </div>
+</div>
+
+{% endblock %}
