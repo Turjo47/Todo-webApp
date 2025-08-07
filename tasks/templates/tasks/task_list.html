@@ -6,12 +6,12 @@
 {% block content %}
     <div class="d-flex justify-content-center align-items-center vh-100">
     {% if request.user.is_authenticated %}
-        <div class="card glass-card p-4 shadow" style="width: 22rem;">
+        <div class="card glass-card p-4 shadow position-relative" style="width: 22rem;">
             <div class="d-flex align-items-center mb-4 gap-5">
-                <p class="mb-0 text-left"> Logged in as {{request.user}}</p>
+                {% comment %} <p class="mb-0"> Logged in as {{request.user}}</p> {% endcomment %}
                 <form action="{% url "logout" %}" method="POST">
                     {% csrf_token %}
-                        <button type="submit" class="btn btn-primary">Logout</button>
+                        <button type="submit" class="btn logout-btn position-absolute" style="top:15px; right:15px;">Logout</button>
                 </form>
             </div>
         

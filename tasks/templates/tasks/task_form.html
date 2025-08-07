@@ -1,7 +1,18 @@
-<h1>Task Form</h1>
-<a href="{% url "tasks" %}"> Go back </a>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Update Task{% endblock %}
+{% block content %}
+
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="card glass-card p-4 shadow position-relative" style="width: 22rem;">
+        <h1 class= "mb-4 text-center">Update Task</h1>
+        <a class="btn logout-btn position-absolute" style="top:15px; right:15px;" href="{% url "tasks" %}"> Go back </a>
+        <form method="POST" action="" >
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}
