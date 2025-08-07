@@ -1,9 +1,16 @@
-<h1>Register</h1>
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-center align-item-center vh-100">
+    <div class="card glass-card p-4 shadow" style="width: 22rem;">
+        <h1 class= "mb-4 text-center">Register</h1>
+            <form class=""action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input type="submit" value="Register" class="btn btn-primary">
+            </form>
+        <p>Already have a account? <a href="{% url "login" %}">Login</a></p>
+    </div>
+    </div>
 
-<form action="" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Register">
-</form>
-
-<p>Already have a account? <a href="">Login</a></p>
+{% endblock %}

@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Task List{% endblock %}
 
 {% block content %}
     <div class="d-flex justify-content-center align-items-center vh-100">
     {% if request.user.is_authenticated %}
-        <div class="card p-4 shadow" style="width: 22rem;">
+        <div class="card glass-card p-4 shadow" style="width: 22rem;">
             <div class="d-flex align-items-center mb-4 gap-5">
                 <p class="mb-0 text-left"> Logged in as {{request.user}}</p>
                 <form action="{% url "logout" %}" method="POST">
@@ -24,16 +25,15 @@
     
     <form class="mb-4" action="" method="GET">
         <input type="text" name="search-area" value={{search_input}}>
-        <input type="submit" value="Search" placeholder="Search Here!">
+        <input type="submit" value="Search">
     </form>
     <table>
         <tr>
             <th>Items</th>
-            <th></th>
         </tr>
         {% for task in tasks %}
             <tr>
-                <td>{{task.title}}</td>
+                <td class="tasks">{{task.title}}</td>
                 <td><a class="btn btn-success btn-sm" href="{% url "task-update" task.id %}">Edit</a></td>
                 <td><a class="btn btn-danger btn-sm"href="{% url "task-delete" task.id %}">Delete</a></td>
             </tr>
