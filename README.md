@@ -37,8 +37,8 @@ python manage.py runserver
 http://127.0.0.1:8000
 ```
 ### Screenshots
-![Login Page](login_page.png)
-![Registration Page](registration_page.png)
-![Task Page](taskList_page.png)
-![Update Page](taskEdit_page.png)
-![Delete Confirmation Page](deleteConfirmation_page.png)
+![Login Page](screenshots/login_page.png)
+![Registration Page](screenshots/registration_page.png)
+![Task Page](screenshots/taskList_page.png)
+![Update Page](screenshots/taskEdit_page.png)
+![Delete Confirmation Page](screenshots/deleteConfirmation_page.png)
